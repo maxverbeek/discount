@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('app');
 });
 
-
 Route::get('/submit', ['as' => 'submit-code', function ()
 {
 	return 1;
 }]);
 
-Route::get('/login/google', ['as' => 'google-login', function ()
-{
-	return 1;
-}]);
+Route::get('/login/google', [
+	'as' => 'google-login',
+	'middleware' => App\Http\Middleware\RedirectIfAuthenticated::class,
+	'uses' => 'AuthController@getGoogleLogin'
+]);
+
+Route::get('/logout', ['uses' => 'AuthController@logout', 'as' => 'logout']);
