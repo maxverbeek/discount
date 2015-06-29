@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
+
+
+Route::get('/submit', ['as' => 'submit-code', function ()
+{
+	return 1;
+}]);
+
+Route::get('/login/google', ['as' => 'google-login', function ()
+{
+	return 1;
+}]);
